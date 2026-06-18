@@ -1,0 +1,28 @@
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run ESLint
+        run: npx eslint . --format json --output-file eslint-report.json
+        continue-on-error: true  # let the reporter step set the final status
+
+      - name: ESLint Report
+        uses: ThomasFarineau/lint-reporter@master   # ← replace with your repo
+        with:
+          report-path: eslint-report.json  # default, can be omitted
+          fail-on-error: true              # default
+          fail-on-warning: false           # default
+          title: Lint Report               # default

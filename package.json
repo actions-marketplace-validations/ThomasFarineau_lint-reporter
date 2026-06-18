@@ -1,0 +1,21 @@
+{
+  "name": "lint-reporter",
+  "version": "1.0.0",
+  "description": "GitHub Action – Lint json to Job Summary",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "bun build src/index.ts --target=node --outfile=dist/index.js --minify",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@actions/core": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "license": "MIT"
+}

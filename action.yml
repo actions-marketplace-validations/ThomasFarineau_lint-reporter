@@ -1,0 +1,25 @@
+name: Lint reporter
+description: Generate a GitHub Actions Job Summary from an lint json report
+author: Thomas Farineau
+
+inputs:
+  report-path:
+    description: Path to the ESLint JSON report file
+    required: false
+    default: eslint-report.json
+  fail-on-error:
+    description: Exit with code 1 when lint errors are found
+    required: false
+    default: 'true'
+  fail-on-warning:
+    description: Exit with code 1 when lint warnings are found
+    required: false
+    default: 'false'
+  title:
+    description: Title displayed in the Job Summary header
+    required: false
+    default: Lint Report
+
+runs:
+  using: 'node24'
+  main: dist/index.js

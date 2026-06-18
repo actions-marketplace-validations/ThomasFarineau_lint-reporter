@@ -1,0 +1,4 @@
+node_modules/
+eslint-report.json
+.idea
+*.iml
